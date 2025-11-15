@@ -1,14 +1,13 @@
-name: CI
+name: CI - Test & Pack
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ "main" ]
 
 jobs:
   build:
-    name: Run tests and build package
     runs-on: ubuntu-latest
 
     steps:
@@ -19,7 +18,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-          cache: 'npm'
 
       - name: Install dependencies
         run: npm install
@@ -27,11 +25,13 @@ jobs:
       - name: Run tests
         run: npm test
 
-      - name: Build package (npm pack)
-        run: npm pack
+      - name: Create package (npm pack)
+        run: |
+          npm pack
+          echo "PACKAGE_FILENAME=$(ls *.tgz)" >> $GITHUB_ENV
 
       - name: Upload package artifact
         uses: actions/upload-artifact@v4
         with:
-          name: package-tgz
-          path: ./*.tgz
+          name: package
+          path: "*.tgz"

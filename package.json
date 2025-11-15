@@ -1,6 +1,6 @@
 {
   "name": "deber7",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Demo repo for CI/CD pipeline that builds an npm package.",
   "main": "index.js",
   "scripts": {
