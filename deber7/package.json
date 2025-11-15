@@ -1,0 +1,16 @@
+{
+  "name": "deber7",
+  "version": "0.1.0",
+  "description": "Demo repo for CI/CD pipeline that builds an npm package.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --runInBand",
+    "build": "npm pack"
+  },
+  "keywords": [],
+  "author": "erick",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.6.0"
+  }
+}
